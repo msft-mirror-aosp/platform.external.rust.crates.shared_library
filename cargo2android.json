@@ -4,7 +4,7 @@
     "com.android.virt"
   ],
   "device": true,
+  "patch": "patches/Android.bp.patch",
   "run": true,
-  "tests": true,
-  "patch": "patches/Android.bp.patch"
+  "tests": true
 }
