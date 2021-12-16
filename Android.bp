@@ -57,32 +57,23 @@ rust_library {
     ],
 }
 
-rust_defaults {
-    name: "shared_library_test_defaults",
+rust_test {
+    name: "shared_library_test_src_lib",
+    host_supported: true,
     crate_name: "shared_library",
-    srcs: ["src/lib.rs"],
     cargo_env_compat: true,
     cargo_pkg_version: "0.1.9",
+    srcs: ["src/lib.rs"],
     test_suites: ["general-tests"],
     auto_gen_config: true,
-    edition: "2015",
-    rustlibs: [
-        "liblazy_static",
-        "liblibc",
-    ],
-}
-
-rust_test_host {
-    name: "shared_library_host_test_src_lib",
-    defaults: ["shared_library_test_defaults"],
     // Manually disabled as these tests depend on specific graphics libraries
     // being available on the machine running the tests.
     test_options: {
         unit_test: false,
     },
-}
-
-rust_test {
-    name: "shared_library_device_test_src_lib",
-    defaults: ["shared_library_test_defaults"],
+    edition: "2015",
+    rustlibs: [
+        "liblazy_static",
+        "liblibc",
+    ],
 }
